@@ -29,3 +29,15 @@ Esto iniciara la aplicacion y podras acceder a cada uno de los servicios:
 - Ionic UI: http://localhost:8100/
 - phpMyAdmin: http://localhost:8001/
 
+phpMyAdmin user: root
+phpMyAdmin password: userpass
+
+## Detener la aplicacion
+Para detener la aplicación escribe en la terminal el siguiente comando:
+
+```bash
+docker compose down
+
+```
+
+
