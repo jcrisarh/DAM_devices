@@ -5,6 +5,11 @@ Aplicacion de Riego Automatizado en ionic como parte del trabajo practico final 
 Antes de clonar y ejecutar esta aplicación, necesitarás tener instalado en tu sistema Docker y docker-compose
 
 ## Instalación
+Primero, necesitas clonar este repositorio en tu máquina local. Abre una terminal y ejecuta el siguiente comando:
+
+```bash
+git clone https://github.com/jcrisarh/DAM_devices.git
+
 Clona este repositorio en tu máquina local usando git clone.
 Navega al directorio de tu proyecto en la terminal.
 Ejecuta npm install para instalar todas las dependencias.
