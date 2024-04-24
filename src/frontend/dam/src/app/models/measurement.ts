@@ -1,6 +1,6 @@
 export interface Measurement {
     medicionId: number;
     fecha: string;
-    valor: number;
+    valor: string;
     dispositivoId: number;
   }
