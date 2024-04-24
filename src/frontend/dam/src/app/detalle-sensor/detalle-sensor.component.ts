@@ -6,14 +6,13 @@ import { ApiService } from '../servicios/api.service';
 HighchartsMore(Highcharts);
 HighchartsSolidGauge(Highcharts);
 import { Subscription } from 'rxjs';
-//import { Measurement } from '../models/measurement';
 
 @Component({
   selector: 'app-detalle-sensor',
   templateUrl: './detalle-sensor.component.html',
   styleUrls: ['./detalle-sensor.component.scss']
 })
-export class DetalleSensorComponent implements OnInit {
+export class DetalleSensorComponent implements OnInit, OnDestroy {
   @Input() deviceName: string = '';
   @Input() deviceId!: number;
   @Input() electrovalveId!: number;
@@ -53,6 +52,7 @@ export class DetalleSensorComponent implements OnInit {
     if (this.insertMeasurementSubscription) {
       this.insertMeasurementSubscription.unsubscribe();
     }
+    console.log('onDestroy has been called')
   }
 
   ngOnChanges(changes: SimpleChanges): void {
