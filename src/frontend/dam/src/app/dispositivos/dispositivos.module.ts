@@ -10,9 +10,6 @@ import { DispositivosPage } from './dispositivos.page';
 
 import { DetalleSensorComponent } from '../detalle-sensor/detalle-sensor.component';
 import { ColorearDirective } from '../directives/colorear.directive';
-
-import {FocusOnSelectDirective} from '../directives/focus-on-select.directive';
-
 import { FilterPipe } from '../pipes/filter.pipe';
 
 import { TooltipDirective } from '../directives/tooltip.directive';
@@ -30,7 +27,6 @@ import { TooltipDirective } from '../directives/tooltip.directive';
     DetalleSensorComponent, 
     ColorearDirective,
     FilterPipe,
-    FocusOnSelectDirective,
     TooltipDirective
   ]
 })
