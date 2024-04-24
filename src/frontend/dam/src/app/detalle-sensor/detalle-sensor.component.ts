@@ -134,7 +134,6 @@ export class DetalleSensorComponent implements OnInit, OnDestroy {
 
   verUltimaMedicion(deviceId: number) {
     console.log('verUltimaMedicion function called');
-    console.log('device id pleaseeeeeeeee', deviceId);
     this.deviceId = deviceId
     this.lastMeasurementSubscription = this.apiService.getLastMeasurement(deviceId).subscribe(
       (lastMeasurement: any) => {
@@ -215,7 +214,7 @@ export class DetalleSensorComponent implements OnInit, OnDestroy {
     const currentDate = new Date()
     const formattedDate = `${currentDate.getFullYear()}-${('0' + (currentDate.getMonth() + 1)).slice(-2)}-${('0' + currentDate.getDate()).slice(-2)} ${('0' + currentDate.getHours()).slice(-2)}:${('0' + currentDate.getMinutes()).slice(-2)}:${('0' + currentDate.getSeconds()).slice(-2)}`;
     const open = false;
-    const measure_num = Math.floor(Math.random() * (90 - 10 + 1)) + 10;
+    const measure_num = Math.floor(Math.random() * 61);
     const measure = measure_num.toString()
     console.log('Esta es la medicion', measure)
   
@@ -247,6 +246,7 @@ export class DetalleSensorComponent implements OnInit, OnDestroy {
       (response: any) => {
         console.log('Measurement inserted successfully', response);
         this.verTodasLasMediciones(this.deviceId);
+        this.verUltimaMedicion(this.deviceId)
       },
       (error) => {
         console.error('Error inserting measurement', error);
