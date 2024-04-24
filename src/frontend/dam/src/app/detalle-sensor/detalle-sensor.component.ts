@@ -71,18 +71,40 @@ export class DetalleSensorComponent implements OnInit, OnDestroy {
   generarChart() {
     this.myChart = Highcharts.chart('gauge-chart-container', {
       chart: {
-        type: 'gauge'
-      },
+        type: 'gauge',
+        backgroundColor: '#F0E5E5',
+        borderRadius: 10,
+        shadow: {
+          color: 'rgba(0,0,0,0.2)',
+          offsetX: 2,
+          offsetY: 2,
+          opacity: 0.5,
+          width: 5
+      }
+    },
       title: {
         text: this.deviceName
         
+      },
+
+      yAxis: {
+        min: 0,
+        max: 100, 
+        title: {
+          text: 'Valor'
+        }
       },
       
 
       series: [{
         type: 'gauge',
         name: 'kPA',
-        data: [80]
+        data: [80],
+        dataLabels: {
+          enabled: true,
+          format: '{y}',
+          y: 20 
+        }
       }]
     });
   }
@@ -118,6 +140,8 @@ export class DetalleSensorComponent implements OnInit, OnDestroy {
         console.log('Last Measurement:', lastMeasurement);
         if (lastMeasurement && lastMeasurement.valor) {
           const lastValue = parseFloat(lastMeasurement.valor);
+
+          this.updateChartValue(lastValue);
 
           if (this.myChart && this.myChart.series && this.myChart.series[0]) {
             this.myChart.series[0].setData([lastValue]);
@@ -200,7 +224,6 @@ export class DetalleSensorComponent implements OnInit, OnDestroy {
     };
 
     const measureData = {
-      //deviceId : this.deviceId, 
       fecha: formattedDate,
       value: measure
 
@@ -226,6 +249,13 @@ export class DetalleSensorComponent implements OnInit, OnDestroy {
       }
     );
     console.log("ELECTROVALVULA CERRADA")
+  }
+
+  updateChartValue(newValue: number) {
+    if (this.myChart && this.myChart.series && this.myChart.series[0]) {
+      this.myChart.series[0].setData([newValue], true, false, false);
+      console.log('Updated chart data with new value:', newValue);
+    }
   }
   
   
