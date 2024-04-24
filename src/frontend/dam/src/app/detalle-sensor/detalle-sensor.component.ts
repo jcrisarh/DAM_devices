@@ -6,6 +6,8 @@ import { ApiService } from '../servicios/api.service';
 HighchartsMore(Highcharts);
 HighchartsSolidGauge(Highcharts);
 import { Subscription } from 'rxjs';
+import { LogRiego } from '../models/log_riego';
+import { Measurement } from '../models/measurement';
 
 @Component({
   selector: 'app-detalle-sensor',
@@ -17,8 +19,8 @@ export class DetalleSensorComponent implements OnInit, OnDestroy {
   @Input() deviceId!: number;
   @Input() electrovalveId!: number;
   private myChart!: Highcharts.Chart;
-  measurements: any[] = [];
-  riegos: any[] = [];
+  measurements: Measurement[] = [];
+  riegos: LogRiego[] = [];
   showTable: boolean = false;
   showTableRiegos: boolean = false;
   electrovalveOpen: boolean = false;
@@ -121,7 +123,7 @@ export class DetalleSensorComponent implements OnInit, OnDestroy {
     console.log('device id', deviceId)
     if (this.deviceId) {
       this.measurementSubscription = this.apiService.getAllMeasurements(deviceId).subscribe(
-        (data: any[]) => {
+        (data: Measurement[]) => {
           this.measurements = data;
           console.log('Measurements:', this.measurements);
         },
@@ -136,7 +138,7 @@ export class DetalleSensorComponent implements OnInit, OnDestroy {
     console.log('verUltimaMedicion function called');
     this.deviceId = deviceId
     this.lastMeasurementSubscription = this.apiService.getLastMeasurement(deviceId).subscribe(
-      (lastMeasurement: any) => {
+      (lastMeasurement: Measurement) => {
         console.log('Last Measurement:', lastMeasurement);
         if (lastMeasurement && lastMeasurement.valor) {
           const lastValue = parseFloat(lastMeasurement.valor);
@@ -176,7 +178,7 @@ export class DetalleSensorComponent implements OnInit, OnDestroy {
     console.log(formattedDate)
 
     this.insertLogRiegoSubscrption=this.apiService.insertLogRiego(this.electrovalveId, data).subscribe(
-      (response: any) => {
+      (response: LogRiego) => {
         console.log('Log riego inserted successfully', response);
         this.verLogRiegosElectrovalvula(this.electrovalveId);
       },
@@ -190,7 +192,7 @@ export class DetalleSensorComponent implements OnInit, OnDestroy {
   verLogRiegosElectrovalvula(electrovalveId: number) {
     if (this.electrovalveId) {
       this.logRiegosSubscription = this.apiService.getLogRiegos(electrovalveId).subscribe(
-        (data: any[]) => {
+        (data: LogRiego[]) => {
           this.riegos = data;
           console.log('Log Riegos', this.riegos);
         },
@@ -233,7 +235,7 @@ export class DetalleSensorComponent implements OnInit, OnDestroy {
     console.log(formattedDate)
 
     this.insertLogRiegoSubscrption=this.apiService.insertLogRiego(this.electrovalveId, data).subscribe(
-      (response: any) => {
+      (response: LogRiego) => {
         console.log('Log riego inserted successfully', response);
         this.verLogRiegosElectrovalvula(this.electrovalveId);
       },
@@ -243,7 +245,7 @@ export class DetalleSensorComponent implements OnInit, OnDestroy {
     );
 
     this.insertMeasurementSubscription=this.apiService.insertMeasurement(this.deviceId, measureData).subscribe(
-      (response: any) => {
+      (response: Measurement) => {
         console.log('Measurement inserted successfully', response);
         this.verTodasLasMediciones(this.deviceId);
         this.verUltimaMedicion(this.deviceId)

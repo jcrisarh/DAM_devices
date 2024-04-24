@@ -30,3 +30,4 @@ El boton "Ver todas las mediciones" permite crear un tabla donde se pueden ver t
 El boton "Ver Log Riegos" tiene una funcionalidad similar al anterior pero en este caso despliega una tabla que permite ver todos los logs por electrovalvula. De igual forma, una vez que se presiona el boton para ver la tabla de logs, se activa la funcionalidad de cerrar la tabla de logs. Recordar tambien, que al cerrar o abrir la electrovalvula, es decir. cada vez que se inserta un registro de log, la tabla se refresca automaticamente.
 
 Este componente presenta dos directivas estructurales "ngIf" para manejar cuando se deben mostrar las tablas de mediciones y de logs. De igual forma. el componente presenta dos directivas estructurales "ngFor" para formar las tablas de visualizacion de mediciones y logs.
+
