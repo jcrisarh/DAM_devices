@@ -11,14 +11,6 @@ Primero, necesitas clonar este repositorio en tu máquina local. Abre una termin
 git clone https://github.com/jcrisarh/DAM_devices.git
 
 ```
-git clone https://github.com/jcrisarh/DAM_devices.git
-```
 
 
-
-Uso
-Una vez que hayas completado la instalación y configuración, puedes ejecutar la aplicación utilizando el siguiente comando:
-
-Copy code
-ng serve
 Esto iniciará el servidor de desarrollo de Angular. Abre tu navegador web y navega a http://localhost:4200 para ver la aplicación en funcionamiento.
