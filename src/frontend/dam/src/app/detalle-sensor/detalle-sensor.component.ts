@@ -19,7 +19,8 @@ export class DetalleSensorComponent implements OnInit, OnDestroy {
   private myChart!: Highcharts.Chart;
   measurements: any[] = [];
   riegos: any[] = [];
-  showTable: boolean = true;
+  showTable: boolean = false;
+  showTableRiegos: boolean = false;
   electrovalveOpen: boolean = false;
   private measurementSubscription!: Subscription;
   private lastMeasurementSubscription!: Subscription;
@@ -71,18 +72,40 @@ export class DetalleSensorComponent implements OnInit, OnDestroy {
   generarChart() {
     this.myChart = Highcharts.chart('gauge-chart-container', {
       chart: {
-        type: 'gauge'
-      },
+        type: 'gauge',
+        backgroundColor: '#F0E5E5',
+        borderRadius: 10,
+        shadow: {
+          color: 'rgba(0,0,0,0.2)',
+          offsetX: 2,
+          offsetY: 2,
+          opacity: 0.5,
+          width: 5
+      }
+    },
       title: {
         text: this.deviceName
         
+      },
+
+      yAxis: {
+        min: 0,
+        max: 100, 
+        title: {
+          text: 'Valor'
+        }
       },
       
 
       series: [{
         type: 'gauge',
-        name: 'kPA',
-        data: [80]
+        name: 'Valor',
+        data: [80],
+        dataLabels: {
+          enabled: true,
+          format: '{y}',
+          y: 20 
+        }
       }]
     });
   }
@@ -111,13 +134,14 @@ export class DetalleSensorComponent implements OnInit, OnDestroy {
 
   verUltimaMedicion(deviceId: number) {
     console.log('verUltimaMedicion function called');
-    console.log('device id pleaseeeeeeeee', deviceId);
     this.deviceId = deviceId
     this.lastMeasurementSubscription = this.apiService.getLastMeasurement(deviceId).subscribe(
       (lastMeasurement: any) => {
         console.log('Last Measurement:', lastMeasurement);
         if (lastMeasurement && lastMeasurement.valor) {
           const lastValue = parseFloat(lastMeasurement.valor);
+
+          this.updateChartValue(lastValue);
 
           if (this.myChart && this.myChart.series && this.myChart.series[0]) {
             this.myChart.series[0].setData([lastValue]);
@@ -154,6 +178,7 @@ export class DetalleSensorComponent implements OnInit, OnDestroy {
     this.insertLogRiegoSubscrption=this.apiService.insertLogRiego(this.electrovalveId, data).subscribe(
       (response: any) => {
         console.log('Log riego inserted successfully', response);
+        this.verLogRiegosElectrovalvula(this.electrovalveId);
       },
       (error) => {
         console.error('Error inserting log riego', error);
@@ -189,7 +214,7 @@ export class DetalleSensorComponent implements OnInit, OnDestroy {
     const currentDate = new Date()
     const formattedDate = `${currentDate.getFullYear()}-${('0' + (currentDate.getMonth() + 1)).slice(-2)}-${('0' + currentDate.getDate()).slice(-2)} ${('0' + currentDate.getHours()).slice(-2)}:${('0' + currentDate.getMinutes()).slice(-2)}:${('0' + currentDate.getSeconds()).slice(-2)}`;
     const open = false;
-    const measure_num = Math.floor(Math.random() * (90 - 10 + 1)) + 10;
+    const measure_num = Math.floor(Math.random() * 61);
     const measure = measure_num.toString()
     console.log('Esta es la medicion', measure)
   
@@ -200,7 +225,6 @@ export class DetalleSensorComponent implements OnInit, OnDestroy {
     };
 
     const measureData = {
-      //deviceId : this.deviceId, 
       fecha: formattedDate,
       value: measure
 
@@ -211,6 +235,7 @@ export class DetalleSensorComponent implements OnInit, OnDestroy {
     this.insertLogRiegoSubscrption=this.apiService.insertLogRiego(this.electrovalveId, data).subscribe(
       (response: any) => {
         console.log('Log riego inserted successfully', response);
+        this.verLogRiegosElectrovalvula(this.electrovalveId);
       },
       (error) => {
         console.error('Error inserting log riego', error);
@@ -220,12 +245,39 @@ export class DetalleSensorComponent implements OnInit, OnDestroy {
     this.insertMeasurementSubscription=this.apiService.insertMeasurement(this.deviceId, measureData).subscribe(
       (response: any) => {
         console.log('Measurement inserted successfully', response);
+        this.verTodasLasMediciones(this.deviceId);
+        this.verUltimaMedicion(this.deviceId)
       },
       (error) => {
         console.error('Error inserting measurement', error);
       }
     );
     console.log("ELECTROVALVULA CERRADA")
+  }
+
+  updateChartValue(newValue: number) {
+    if (this.myChart && this.myChart.series && this.myChart.series[0]) {
+      this.myChart.series[0].setData([newValue], true, false, false);
+      console.log('Updated chart data with new value:', newValue);
+    }
+  }
+
+  toggleMedicionesTabla() {
+    this.showTable = !this.showTable;
+    if (this.showTable) {
+      this.verTodasLasMediciones(this.deviceId);
+    } else {
+      console.log("closed")
+    }
+  }
+
+  toggleLogsTabla() {
+    this.showTableRiegos = !this.showTableRiegos;
+    if (this.showTableRiegos) {
+      this.verLogRiegosElectrovalvula(this.electrovalveId);
+    } else {
+      console.log("closed")
+    }
   }
   
   
