@@ -1,4 +1,4 @@
-import { Directive, ElementRef, HostListener } from '@angular/core';
+import { Directive, ElementRef, HostListener} from '@angular/core';
 
 @Directive({
   selector: '[appColorear]'
@@ -8,7 +8,7 @@ export class ColorearDirective {
   constructor(private el: ElementRef) { }
 
   @HostListener('mouseenter') mouseEnter() {
-    this.colorear('blue')
+    this.colorear('CadetBlue')
   }
 
   @HostListener('mouseleave') mouseLeave() {
