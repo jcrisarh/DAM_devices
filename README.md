@@ -8,6 +8,8 @@ Antes de clonar y ejecutar esta aplicación, necesitarás tener instalado en tu 
 Clona este repositorio en tu máquina local usando git clone.
 Navega al directorio de tu proyecto en la terminal.
 Ejecuta npm install para instalar todas las dependencias.
+git clone https://github.com/jcrisarh/DAM_devices.git
+
 
 Uso
 Una vez que hayas completado la instalación y configuración, puedes ejecutar la aplicación utilizando el siguiente comando:
