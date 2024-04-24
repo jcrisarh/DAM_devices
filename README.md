@@ -17,6 +17,7 @@ Navega hasta el directorio de la aplicacion:
 cd DAM_devices
 
 ```
+## Ejecutar la aplicacion
 
 
 Esto iniciará el servidor de desarrollo de Angular. Abre tu navegador web y navega a http://localhost:4200 para ver la aplicación en funcionamiento.
