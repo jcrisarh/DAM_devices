@@ -9,7 +9,7 @@ Clona este repositorio en tu máquina local usando git clone.
 Navega al directorio de tu proyecto en la terminal.
 Ejecuta npm install para instalar todas las dependencias.
 git clone https://github.com/jcrisarh/DAM_devices.git
-Este es un fragmento de código en línea: `git clone https://github.com/jcrisarh/DAM_devices.git`
+Este es un fragmento de código en línea: ```git clone https://github.com/jcrisarh/DAM_devices.git```
 
 
 
