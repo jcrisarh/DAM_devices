@@ -1,0 +1,32 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Dispositivos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" scrollY="true" class="device-list">
+  <ion-searchbar [(ngModel)]="searchText"></ion-searchbar>
+
+  <div appColorear>Texto a colorear</div>
+  <div class="center-container">
+    <ion-list class="device-list">
+      <ion-item *ngFor="let device of devices | filter: searchText" 
+                (click)="showSensorDetails(device.dispositivoId, device.nombre, device.electrovalvulaId)" 
+                button="true" 
+                class="device-item"
+                [appTooltip]="device.nombre + ' - ID: ' + device.dispositivoId + ' - Electrovalve: ' + device.electrovalvulaId + ' - Ubicacion: ' + device.ubicacion" >
+
+        <ion-label>
+          <h2>{{ device.nombre }}</h2>
+          <p>
+            <ion-icon name="location" slot="start"></ion-icon>
+            {{ device.ubicacion }}
+          </p>
+        </ion-label>
+      </ion-item> 
+    </ion-list>
+  </div>
+  <app-detalle-sensor *ngIf="showDetalleSensor" [deviceName]="selectedDeviceName" [deviceId]="selectedDeviceId" [electrovalveId]="selectedElectrovalveId"></app-detalle-sensor>
+</ion-content>
+
+

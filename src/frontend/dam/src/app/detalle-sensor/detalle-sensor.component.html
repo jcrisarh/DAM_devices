@@ -1,0 +1,44 @@
+<div id="gauge-chart-container" style="width: 100%; height: 400px;"></div>
+
+<div class="button-container">
+  <button appConfirmAction="Are you sure you want to open the valve?" class="button" (click)="openElectrovalve()">Abrir Electrovalvula</button>
+  <button class="button"(click)="toggleElectrovalve()">
+    {{ electrovalveOpen ? 'CERRAR ELECTROVALVULA' : 'ABRIR ELECTROVALVULA' }}
+  </button>
+  <button class="button" (click)="verTodasLasMediciones(deviceId)">Ver Todas las Mediciones</button>
+  <table class="measurement-table" *ngIf="measurements.length > 0">
+    <thead>
+      <tr>
+        <th>Fecha</th>
+        <th>Valor</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let measurement of measurements">
+        <td>{{ measurement.fecha }}</td>
+        <td>{{ measurement.valor }}</td>  
+      </tr>
+    </tbody>
+  </table>
+  <button class="button" (click)="verLogRiegosElectrovalvula(electrovalveId)">Ver Log Riegos</button>
+  <table class="measurement-table" *ngIf="riegos.length > 0">
+    <thead>
+      <tr>
+        <th>Log riego Id</th>
+        <th>Apertura</th>
+        <th>Fecha</th>
+        <th>Electrovalula Id</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let riego of riegos">
+        <td>{{ riego.logRiegoId}}</td>
+        <td>{{ riego.apertura }}</td>  
+        <td>{{ riego.fecha }}</td>
+        <td>{{ riego.electrovalvulaId }}</td>  
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+

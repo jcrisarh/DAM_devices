@@ -1,0 +1,40 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Dispositivos App
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="content">
+  <div class="container">
+    <button ion-button color="primary" class="custom-button">Enter</button>
+  </div>
+</ion-content>
+
+<style>
+  .content {
+    --background: url('https://images.deepai.org/art-image/24f5d59874364c9f8e28fa6e728a1c82/i-need-a-light-violet-image-representing-a-barometer-.jpg') center center / cover no-repeat; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .container {
+    text-align: center;
+  }
+
+  .custom-button {
+    background-color: #b3b3b3; /* gray button */
+    color: white;
+    font-size: 1.5em; /* larger font size */
+    padding: 15px 30px; /* larger padding */
+    border-radius: 10px; /* rounded corners */
+    border: none; /* remove button border */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* add shadow */
+  }
+
+  .custom-button:hover {
+    background-color: #999999; /* darker gray on hover */
+  }
+</style>
