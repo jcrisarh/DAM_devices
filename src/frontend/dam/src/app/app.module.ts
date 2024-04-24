@@ -11,15 +11,8 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { HttpClientModule } from '@angular/common/http';
 
-//import { ColorearDirective } from '../directives/colorear.directive';
-
-import { ConfirmActionDirective  } from './directives/confirm.directive';
-import { TooltipDirective } from './directives/tooltip.directive';
-
-
-
 @NgModule({
-  declarations: [AppComponent, ConfirmActionDirective, TooltipDirective],
+  declarations: [AppComponent],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule, FormsModule, ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
