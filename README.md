@@ -19,5 +19,11 @@ cd DAM_devices
 ```
 ## Ejecutar la aplicacion
 
+En la terminal ejecuta el comando:
+```bash
+docker compose up
 
-Esto iniciará el servidor de desarrollo de Angular. Abre tu navegador web y navega a http://localhost:4200 para ver la aplicación en funcionamiento.
+```
+Esto iniciara la aplicacion y podras acceder a cada uno de los servicios:
+- Api Express: http://localhost:8000/
+
