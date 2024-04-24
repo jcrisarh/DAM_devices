@@ -26,4 +26,6 @@ docker compose up
 ```
 Esto iniciara la aplicacion y podras acceder a cada uno de los servicios:
 - Api Express: http://localhost:8000/
+- Ionic UI: http://localhost:8100/
+- phpMyAdmin: http://localhost:8001/
 
