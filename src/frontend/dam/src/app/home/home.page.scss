@@ -11,6 +11,7 @@
 #container strong {
   font-size: 20px;
   line-height: 26px;
+  color: pastelgreen; /* Change the color to pastel green */
 }
 
 #container p {
@@ -24,4 +25,8 @@
 
 #container a {
   text-decoration: none;
+}
+
+ion-title {
+  color: pastelgreen; /* Set the title color to pastel green */
 }
