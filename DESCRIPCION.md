@@ -31,3 +31,11 @@ El boton "Ver Log Riegos" tiene una funcionalidad similar al anterior pero en es
 
 Este componente presenta dos directivas estructurales "ngIf" para manejar cuando se deben mostrar las tablas de mediciones y de logs. De igual forma. el componente presenta dos directivas estructurales "ngFor" para formar las tablas de visualizacion de mediciones y logs.
 
+## SERVICIO API
+
+Este servicio me permite conectar el front end de la aplicacion a la API en express en el backend.
+
+## API EN EXPRESS
+
+Api con conexion a la base de datos que permite obtener datos desde la base de datos e insertar datos a la misma.
+
