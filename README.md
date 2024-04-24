@@ -30,6 +30,7 @@ Esto iniciara la aplicacion y podras acceder a cada uno de los servicios:
 - phpMyAdmin: http://localhost:8001/
 
 phpMyAdmin user: root
+
 phpMyAdmin password: userpass
 
 ## Detener la aplicacion
