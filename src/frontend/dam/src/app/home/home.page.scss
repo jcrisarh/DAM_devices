@@ -1,32 +1,63 @@
-#container {
+ion-toolbar {
+  --background: #96ad9e;
+}
+
+ion-toolbar ion-title {
+  background-color: #96ad9e;
+  color: black;
+  font-weight: 600;
+  font-size: 22px;
+  font-family: 'Comic Sans MS', cursive;
   text-align: center;
-
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+  width: 100%;
 }
 
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
-  color: pastelgreen; /* Change the color to pastel green */
+.content {
+  --background: #e8d3ae;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
 }
 
-#container p {
-  font-size: 16px;
-  line-height: 22px;
-
-  color: #8c8c8c;
-
-  margin: 0;
+.container {
+  text-align: center;
 }
 
-#container a {
-  text-decoration: none;
+.box {
+  width: 85%;
+  height: 900px;
+  background-color: #EED3AE;
+  border-radius: 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 10px 0 10px rgba(0, 0, 0, 0.1);
 }
 
-ion-title {
-  color: pastelgreen; /* Set the title color to pastel green */
+.box h2 {
+  color: #987654;
+  font-size: 80px;
+  font-weight: bold;
+  font-family: 'Comic Sans MS', cursive;
+  margin-bottom: 20px;
 }
+
+.button-styling {
+  background-color: #cccccc;
+  color: #4b4747;
+  font-size: 1.2em; 
+  padding: 50px 50px;
+  border-radius: 20px; 
+  border: none; 
+  cursor: pointer;
+  box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.2);
+  font-family: 'Comic Sans MS', cursive;
+}
+
+.button-styling:hover {
+  background-color: #aaaaaa;
+}
+
+

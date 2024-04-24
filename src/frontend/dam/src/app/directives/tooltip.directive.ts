@@ -20,12 +20,15 @@ export class TooltipDirective {
     const tooltip = this.renderer.createElement('div');
     const text = this.renderer.createText(this.tooltipText);
     this.renderer.appendChild(tooltip, text);
-    this.renderer.setStyle(tooltip, 'position', 'absolute');
+    this.renderer.setStyle(tooltip, 'position', 'fixed');
     this.renderer.setStyle(tooltip, 'background', 'rgba(0, 0, 0, 0.8)');
     this.renderer.setStyle(tooltip, 'color', '#fff');
     this.renderer.setStyle(tooltip, 'padding', '5px');
     this.renderer.setStyle(tooltip, 'border-radius', '4px');
     this.renderer.setStyle(tooltip, 'z-index', '9999');
+    this.renderer.setStyle(tooltip, 'margin-left', '100px');
+    this.renderer.setStyle(tooltip, 'margin-top', '40px');
+    this.renderer.setStyle(tooltip, 'height', '35px');
     this.renderer.appendChild(this.el.nativeElement, tooltip);
   }
 
