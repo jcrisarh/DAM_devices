@@ -102,4 +102,15 @@ ion-toolbar {
     --background: #D2B48C;
   }
 
+  .center-container {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .close-button {
+    margin-top: 20px;
+    --background: rgb(230, 198, 203);
+    --color: rgb(73, 71, 71);
+  }
+
   

@@ -13,4 +13,4 @@ Se han añadido directivas custom. Una de ellas resalta el nombre del dispositiv
 
 Al seleccionar un dispositivo, se despliegan sus detalles en un componente denominado 'DetalleSensorComponent'.
 
-Se utiliza una directiva estructural "ngFor" para formar una lista de dispositivos. Además, se emplea una directiva estructural "ngIf" para mostrar el componente de detalles del sensor solo cuando el usuario interactúa con alguno de los dispositivos.
+Se utiliza una directiva estructural "ngFor" para formar una lista de dispositivos. Además, se emplean dos directivas estructurales "ngIf", la primera para mostrar un boton que me permita cerrar los detalles y la segunda para mostrar el componente de detalles del sensor, los dos aparecen solo cuando el usuario interactúa con alguno de los dispositivos.

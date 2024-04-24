@@ -25,6 +25,12 @@
       </ion-item> 
     </ion-list>
   </div>
+  <div class="center-container">
+    <ion-button *ngIf="showDetalleSensor" (click)="hideDetalleSensor()" class="close-button">
+      Cerrar Detalles
+    </ion-button>
+  </div>
+
   <app-detalle-sensor *ngIf="showDetalleSensor" [deviceName]="selectedDeviceName" [deviceId]="selectedDeviceId" [electrovalveId]="selectedElectrovalveId"></app-detalle-sensor>
 </ion-content>
 

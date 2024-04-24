@@ -60,6 +60,10 @@ export class DispositivosPage implements OnInit {
     this.showDetalleSensor = true;
   }
 
+  hideDetalleSensor() {
+    this.showDetalleSensor = false;
+  }
+
   
 
 }
