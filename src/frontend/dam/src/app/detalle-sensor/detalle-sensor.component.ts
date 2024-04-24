@@ -19,7 +19,8 @@ export class DetalleSensorComponent implements OnInit, OnDestroy {
   private myChart!: Highcharts.Chart;
   measurements: any[] = [];
   riegos: any[] = [];
-  showTable: boolean = true;
+  showTable: boolean = false;
+  showTableRiegos: boolean = false;
   electrovalveOpen: boolean = false;
   private measurementSubscription!: Subscription;
   private lastMeasurementSubscription!: Subscription;
@@ -98,7 +99,7 @@ export class DetalleSensorComponent implements OnInit, OnDestroy {
 
       series: [{
         type: 'gauge',
-        name: 'kPA',
+        name: 'Valor',
         data: [80],
         dataLabels: {
           enabled: true,
@@ -178,6 +179,7 @@ export class DetalleSensorComponent implements OnInit, OnDestroy {
     this.insertLogRiegoSubscrption=this.apiService.insertLogRiego(this.electrovalveId, data).subscribe(
       (response: any) => {
         console.log('Log riego inserted successfully', response);
+        this.verLogRiegosElectrovalvula(this.electrovalveId);
       },
       (error) => {
         console.error('Error inserting log riego', error);
@@ -234,6 +236,7 @@ export class DetalleSensorComponent implements OnInit, OnDestroy {
     this.insertLogRiegoSubscrption=this.apiService.insertLogRiego(this.electrovalveId, data).subscribe(
       (response: any) => {
         console.log('Log riego inserted successfully', response);
+        this.verLogRiegosElectrovalvula(this.electrovalveId);
       },
       (error) => {
         console.error('Error inserting log riego', error);
@@ -243,6 +246,7 @@ export class DetalleSensorComponent implements OnInit, OnDestroy {
     this.insertMeasurementSubscription=this.apiService.insertMeasurement(this.deviceId, measureData).subscribe(
       (response: any) => {
         console.log('Measurement inserted successfully', response);
+        this.verTodasLasMediciones(this.deviceId);
       },
       (error) => {
         console.error('Error inserting measurement', error);
@@ -255,6 +259,24 @@ export class DetalleSensorComponent implements OnInit, OnDestroy {
     if (this.myChart && this.myChart.series && this.myChart.series[0]) {
       this.myChart.series[0].setData([newValue], true, false, false);
       console.log('Updated chart data with new value:', newValue);
+    }
+  }
+
+  toggleMedicionesTabla() {
+    this.showTable = !this.showTable;
+    if (this.showTable) {
+      this.verTodasLasMediciones(this.deviceId);
+    } else {
+      console.log("closed")
+    }
+  }
+
+  toggleLogsTabla() {
+    this.showTableRiegos = !this.showTableRiegos;
+    if (this.showTableRiegos) {
+      this.verLogRiegosElectrovalvula(this.electrovalveId);
+    } else {
+      console.log("closed")
     }
   }
   

@@ -54,7 +54,7 @@ export class DispositivosPage implements OnInit, OnDestroy {
 
   showSensorDetails(deviceId: number, deviceName: string, electrovalveId: number) {
     this.deviceSubscription = this.apiService.getDeviceDetails(deviceId).subscribe(
-      (deviceDetails: any) => {
+      (deviceDetails: Device) => {
         console.log('Device details:', deviceDetails);
         this.selectedDeviceName = deviceName;
         this.selectedDeviceId = deviceId;
